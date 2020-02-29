@@ -9,7 +9,7 @@
             </div>
             <div class="like-bottom">
                 <div class="bottom-header"
-                :style="{'background':'url('+item.imgUrl+') no-repeate center center'}"
+                :style="{'background':'url('+item.imgUrl+') no-repeat center center'}"
                 >
                     <div class="header-info">
                         <span>
@@ -135,6 +135,7 @@
         display: block;
         line-height: .5rem;
         margin-left: .1rem;
+
     }
     .like-bottom ul li span.price{
         display: block;

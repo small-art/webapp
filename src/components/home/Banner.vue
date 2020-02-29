@@ -8,7 +8,10 @@
         </transition>
         <div class="banner-header">
             <div class='banner-top'>
-        <div class="top-left">
+        <div class="top-left"
+        @click="toCity"
+        >
+            <!--添加一个跳转事件-->
             北京
             <i class="iconfont">&#xe602;</i>
         </div>
@@ -65,6 +68,11 @@
     methods:{
         toShow(){
             this.toshow=!this.toshow;
+        },
+        toCity(){
+            this.$router.push({
+                 path:"/city"
+            })
         }
     }
        }
