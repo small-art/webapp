@@ -1,67 +1,28 @@
 <template>
     <div class="like">
-        <div class="like-list">
+        <div class="like-list" v-for="item in likeList" :key="item.id">
             <div class="like-top">
                 <div class="top-left">
-                    <span>户外与休闲</span>
+                    <span>{{item.title}}</span>
                 </div>
                 <p class="top-right">更多></p>
             </div>
             <div class="like-bottom">
-                <div class="bottom-header">
+                <div class="bottom-header"
+                :style="{'background':'url('+item.imgUrl+') no-repeate center center'}"
+                >
                     <div class="header-info">
-                        <span>[热带云南]10-4月 春城昆明-建水古</span>
-                        <span>￥9999起</span>
+                        <span>
+                            {{item.Introduction}}
+                        </span>
+                        <span>￥{{item.price}}起</span>
                     </div>
                 </div>
                 <ul>
-                    <li>
-                        <img src="http://localhost:8081/img/like2.png" alt="">
-                        <span class="title">春城昆明-建水古</span>
-                        <span class="price">￥9999起</span>
-                    </li>
-                    <li>
-                        <img src="http://localhost:8081/img/like2.png" alt="">
-                        <span class="title">春城昆明-建水古</span>
-                        <span class="price">￥9999起</span>
-                    </li>
-                    <li>
-                        <img src="http://localhost:8081/img/like2.png" alt="">
-                        <span class="title">春城昆明-建水古</span>
-                        <span class="price">￥9999起</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="like-list">
-            <div class="like-top">
-                <div class="top-left">
-                    <span>户外与休闲</span>
-                </div>
-                <p class="top-right">更多></p>
-            </div>
-            <div class="like-bottom">
-                <div class="bottom-header">
-                    <div class="header-info">
-                        <span>[热带云南]10-4月 春城昆明-建水古</span>
-                        <span>￥9999起</span>
-                    </div>
-                </div>
-                <ul>
-                    <li>
-                        <img src="http://localhost:8081/img/like2.png" alt="">
-                        <span class="title">春城昆明-建水古</span>
-                        <span class="price">￥9999起</span>
-                    </li>
-                    <li>
-                        <img src="http://localhost:8081/img/like2.png" alt="">
-                        <span class="title">春城昆明-建水古</span>
-                        <span class="price">￥9999起</span>
-                    </li>
-                    <li>
-                        <img src="http://localhost:8081/img/like2.png" alt="">
-                        <span class="title">春城昆明-建水古</span>
-                        <span class="price">￥9999起</span>
+                    <li v-for="v in item.cityList" :key="v.id">
+                        <img :src="v.imgUrl" alt="">
+                        <span class="title">{{v.title}}</span>
+                        <span class="price">￥{{v.price}}起</span>
                     </li>
                 </ul>
             </div>
@@ -72,7 +33,9 @@
 </template>
 
 <script>
-    export default {}
+    export default {
+        props:['likeList']
+    }
 </script>
 
 <style scoped>
@@ -107,8 +70,9 @@
     }
 
     .like-top .top-left span {
-        padding-left: .5rem;
+        padding-left: .4rem;
         font-size: .5rem;
+
     }
 
     .like-top .top-right {
@@ -169,12 +133,14 @@
     .like-bottom ul li span.title{
         font-size: .3rem;
         display: block;
-        margin-top: .2rem;
+        line-height: .5rem;
+        margin-left: .1rem;
     }
     .like-bottom ul li span.price{
         display: block;
         color: orange;
         font-weight: 500;
         font-size: .45rem;
+        line-height: .5rem;
     }
 </style>

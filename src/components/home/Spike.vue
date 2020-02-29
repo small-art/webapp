@@ -38,31 +38,12 @@
 <script>
     import CountDown from 'vue2-countdown'
     export default {
+        props:['spikeList'],
         components:{
             CountDown,/*在当前页面引入组件*/
         },
         data(){
             return{
-                spikeList:[
-                    {
-                      id:0,
-                      startTime:15707708,
-                      endTime:125307706,
-                      imgUrl:"http://localhost:8081/img/spike2.jpg",
-                      title:"[元旦特惠·莲花山]1.1  登俊险莲花山 看三佛映壁奇观 一入莲花山 回眸千山秀（单日登山活动）",
-                      price:80,
-                      num:35,
-                    },
-                    {
-                        id:1,
-                        startTime:15707708,
-                        endTime:125307706,
-                        imgUrl:"http://localhost:8081/img/spike2.jpg",
-                        title:"[元旦特惠·莲花山]1.1  登俊险莲花山 看三佛映壁奇观 一入莲花山 回眸千山秀（单日登山活动）",
-                        price:80,
-                        num:35,
-                    }
-                ],
                 swiperOption:{
                     pagination:{
                         el: '.swiper-pagination'

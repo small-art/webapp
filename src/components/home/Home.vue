@@ -5,8 +5,8 @@
        <Tabs></Tabs>
        <Scroll></Scroll>
        <Swiper></Swiper>
-       <Spike></Spike>
-       <Like></Like>
+       <Spike :spikeList="spikeList"></Spike><!--父组件传递子组件-->
+       <Like :likeList="likeList"></Like>
        <Footer></Footer>
    </div>
 </template>
@@ -22,6 +22,12 @@
     import Footer from './Footer'
 
     export default {
+        data(){
+            return{
+          spikeList:[],
+          likeList:[],
+            }
+        },
         components:{
             Banner,
             Icons,
@@ -31,6 +37,19 @@
             Spike,
             Like,
             Footer
+        },mounted(){
+          this.http();
+        },
+        methods:{/*定一个方法请求接口*/
+             http(){
+                let That =this;
+                this.axios.get("http://localhost:8081/api/dataHome.json")
+                    .then((res)=>{
+                        let data=res.data.data[0];
+                     That.spikeList=data.spikeList;
+                     this.likeList=data.likeList;
+                    })
+             }
         }
     }
 </script>

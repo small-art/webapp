@@ -22,7 +22,7 @@ import animated from 'animate.css'
 Vue.use(animated);
 //引入axios
 import axios from 'axios'
-Vue.prototype.axios = axios;
+Vue.prototype.axios=axios
 new Vue({
   router,
   store,
