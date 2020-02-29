@@ -12,7 +12,7 @@
         @click="toCity"
         >
             <!--添加一个跳转事件-->
-            北京
+           {{cityName}}
             <i class="iconfont">&#xe602;</i>
         </div>
         <div class="top-search">
@@ -49,6 +49,7 @@
 </template>
 
 <script>
+    import {mapState} from 'vuex'
     export default {
        data(){
            return{
@@ -65,6 +66,9 @@
                }
            }
        },
+        computed:{
+            ...mapState(['cityName'])
+        },
     methods:{
         toShow(){
             this.toshow=!this.toshow;
