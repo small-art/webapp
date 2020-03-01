@@ -8,8 +8,6 @@ defaultCity=localStorage.city;
 export default new Vuex.Store({
   state: {
       cityName:defaultCity,
-
-
   },
   mutations: {
       changeCity(state,city){

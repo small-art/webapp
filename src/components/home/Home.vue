@@ -12,6 +12,7 @@
 </template>
 
 <script>
+    import {mapState} from 'vuex'
     import Banner from './Banner'
     import Icons from './Icons'
     import Tabs from './Tabs'
@@ -22,12 +23,6 @@
     import Footer from './Footer'
 
     export default {
-        data(){
-            return{
-          spikeList:[],
-          likeList:[],
-            }
-        },
         components:{
             Banner,
             Icons,
@@ -37,20 +32,43 @@
             Spike,
             Like,
             Footer
-        },mounted(){
-          this.http();
+        },
+        data(){
+            return{
+                spikeList:[],
+                likeList:[],
+                changeCity:''
+            }
+        },
+        computed:{
+            ...mapState(["cityName"])
         },
         methods:{/*定一个方法请求接口*/
              http(){
                 let That =this;
                 this.axios.get("http://localhost:8081/api/dataHome.json")
                     .then((res)=>{
-                        let data=res.data.data[0];
-                     That.spikeList=data.spikeList;
-                     this.likeList=data.likeList;
+                     let data=res.data.data;
+                     data.forEach((item)=>{
+                        if(item.city == That.cityName){
+                            That.spikeList = item.spikeList;
+                            That.likeList = item.likeList
+                            }
+                        })
+
                     })
              }
+        },
+        mounted(){
+            this.changeCity = this.cityName;
+            this.http();
+        },
+        activated(){
+            if(this.changeCity!=this.cityName){
+            this.http();
+            this.changeCity=this.cityName;
         }
+    }
     }
 </script>
 

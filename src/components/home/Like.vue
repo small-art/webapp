@@ -10,16 +10,20 @@
             <div class="like-bottom">
                 <div class="bottom-header"
                 :style="{'background':'url('+item.imgUrl+') no-repeat center center'}"
+                     @click="toDetails(item)"
                 >
                     <div class="header-info">
-                        <span>
+                        <span  @click="toDetails(val)">
                             {{item.Introduction}}
                         </span>
                         <span>￥{{item.price}}起</span>
                     </div>
                 </div>
                 <ul>
-                    <li v-for="v in item.cityList" :key="v.id">
+                    <li v-for="v in item.cityList" :key="v.id"
+                        @click="toDetails"
+                    >
+
                         <img :src="v.imgUrl" alt="">
                         <span class="title">{{v.title}}</span>
                         <span class="price">￥{{v.price}}起</span>
@@ -34,7 +38,18 @@
 
 <script>
     export default {
-        props:['likeList']
+        props:['likeList'],
+        methods:{
+            toDetails(item,val){
+                this.$router.push({
+                    path:'/details',
+                    query:{
+                        item,
+                        val
+                    }
+                })
+            }
+        }
     }
 </script>
 

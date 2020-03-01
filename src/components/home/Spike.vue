@@ -2,7 +2,9 @@
     <div class="spike">
         <swiper :options="swiperOption">
      <swiper-slide v-for="item in spikeList" :key="item.id">
-                <div class="spike-content">
+                <div class="spike-content"
+                     @click="toDetails(item)"
+                >
                     <div class="spike-top">
                         <img src="@/assets/img/spike1.png">
                         <span>距离结束</span>
@@ -53,6 +55,16 @@
         },
         mounted(){
             console.log(new Date().getTime()+5*24*3600)
+        },
+        methods:{
+            toDetails(item){
+                this.$router.push({
+                    path:'/details',
+                    query:{
+                        item
+                    }
+                })
+            }
         }
     }
 </script>

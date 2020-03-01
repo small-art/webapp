@@ -1,17 +1,17 @@
 <template>
-    <div class="city">
+    <div><!--加div包裹子元素-->
         <Header></Header>
-        <List></List>
+        <Banner></Banner>
     </div>
 </template>
 
 <script>
     import Header from './Header'
-    import List from './List'
+    import Banner from './Banner'
     export default {
         components:{
             Header,
-            List
+            Banner
         }
     }
 </script>

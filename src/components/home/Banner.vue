@@ -77,7 +77,8 @@
             this.$router.push({
                  path:"/city"
             })
-        }
+        },
+
     }
        }
 </script>

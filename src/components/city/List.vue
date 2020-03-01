@@ -1,7 +1,9 @@
 <template>
     <div class="list">
         <div class="city-item">
-            <p>定位/附近城市</p>
+            <p>
+                定位/附近城市
+            </p>
             <div v-for="item in mapCities" :key="item.id"
             @click="toHome(item.name)"
             >{{item.name}}</div>
@@ -32,6 +34,15 @@
                 hotCities:[]
             }
         },
+        methods:{
+            toHome(city){
+                this.changeCity(city);
+                this.$router.push({
+                    path:'/'
+                })
+            },
+            ...mapMutations(['changeCity'])
+        },
        mounted(){
            let That=this;
            this.axios.get("http://localhost:8081/api/city.json")
@@ -42,15 +53,7 @@
                    That.hotCities=data.hotCities;
                })
        },
-        methods:{
-            toHome(city){
-                this.changeCity(city);
-                this.$router.push({
-                    path:'/'
-                })
-            },
-            ...mapMutations(['changeCity'])
-        }
+
     }
 </script>
 
